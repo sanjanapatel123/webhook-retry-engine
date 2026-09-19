@@ -1,0 +1,1 @@
+{"version":3,"file":"event.service.d.ts","sourceRoot":"","sources":["event.service.ts"],"names":[],"mappings":"AAEA,UAAU,gBAAgB;IACxB,OAAO,EAAE,MAAM,CAAC;IAChB,IAAI,EAAE,MAAM,CAAC;IACb,UAAU,EAAE,MAAM,CAAC;IACnB,OAAO,EAAE,OAAO,CAAC;CAClB;AAED,wBAAsB,WAAW,CAAC,IAAI,EAAE,gBAAgB;;;;;;;;;;;;;;;;;;;;GAoBvD;AAED,wBAAsB,iBAAiB,CAAC,OAAO,EAAE,MAAM;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;WAiBtD"}

@@ -1,0 +1,20 @@
+import * as Prisma from './internal/prismaNamespaceBrowser.js';
+export { Prisma };
+export * as $Enums from './enums.js';
+export * from './enums.js';
+/**
+ * Model Event
+ *
+ */
+export type Event = Prisma.EventModel;
+/**
+ * Model DeliveryJob
+ *
+ */
+export type DeliveryJob = Prisma.DeliveryJobModel;
+/**
+ * Model DeliveryAttempt
+ *
+ */
+export type DeliveryAttempt = Prisma.DeliveryAttemptModel;
+//# sourceMappingURL=browser.d.ts.map

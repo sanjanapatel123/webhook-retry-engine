@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum DeliveryStatus {
+  PENDING
+  PROCESSING
+  SUCCEEDED
+  DEAD
+}
+
+enum AttemptStatus {
+  SUCCESS
+  FAILED
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  eventId     String   @unique
+  type        String
+  occurredAt  DateTime
+  payload     Json
+  createdAt   DateTime @default(now())
+
+  deliveryJob DeliveryJob?
+}
+
+model DeliveryJob {
+  id            String         @id @default(cuid())
+  eventId       String         @unique
+  status        DeliveryStatus @default(PENDING)
+  attemptCount  Int            @default(0)
+  maxAttempts   Int            @default(3)
+  nextAttemptAt DateTime       @default(now())
+  processingStartedAt DateTime?
+  lastError     String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+   
+  event    Event             @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  attempts DeliveryAttempt[]
+}
+
+model DeliveryAttempt {
+  id            String        @id @default(cuid())
+  deliveryJobId String
+  attemptNumber Int
+  status        AttemptStatus
+  httpStatus    Int?
+  error         String?
+  startedAt     DateTime      @default(now())
+  finishedAt    DateTime?
+  durationMs    Int?
+
+  deliveryJob DeliveryJob @relation(fields: [deliveryJobId], references: [id], onDelete: Cascade)
+
+  @@unique([deliveryJobId, attemptNumber])
+}
