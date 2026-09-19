@@ -1,5 +1,9 @@
 node_modules/
 dist/
+coverage/
 .env
 .env.*
 !.env.example
+
+# TypeScript generated test files
+tests/*.test.js
